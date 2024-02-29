@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Fast Gradient Background</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden; /* Hide overflow to prevent scrollbars */
+    }
+    
+    .content {
+        text-align: center;
+        color: white;
+        font-size: 24px;
+        z-index: 1; /* Ensure content is above the gradient background */
+    }
+
+    #gradient {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0; /* Set z-index to be behind content */
+    }
+</style>
+</head>
+<body>
+    <div class="content">
+        <h1>Interactive Fast Gradient Background</h1>
+        <p>This is an example of an interactive gradient background with rapidly changing colors.</p>
+    </div>
+    <canvas id="gradient"></canvas>
+    <script>
+        const canvas = document.getElementById('gradient');
+        const ctx = canvas.getContext('2d');
+
+        // Set canvas size to match window size
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Generate random colors for the gradient
+        function generateRandomColor() {
+            return '#' + Math.floor(Math.random()*16777215).toString(16);
+        }
+
+        // Draw gradient animation
+        function draw() {
+            const color1 = generateRandomColor();
+            const color2 = generateRandomColor();
+
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, color1);
+            gradient.addColorStop(1, color2);
+
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Repeat the animation rapidly
+            requestAnimationFrame(draw);
+        }
+
+        // Initial call to start the animation
+        draw();
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            // Update canvas size to match new window size
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>

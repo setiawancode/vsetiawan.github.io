@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faster Colorful Animated Gradient Background</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh; /* Ensure full viewport height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: gradientAnimation 5s infinite alternate; /* Faster animation: 5s duration */
+    }
+    
+    .content {
+        text-align: center;
+        color: white;
+        font-size: 24px;
+    }
+
+    @keyframes gradientAnimation {
+        0% {
+            background: linear-gradient(to bottom right, #ff5e78, #ff78d1, #a084ff, #56c6ff, #6effc6, #a6ff8a); /* Vibrant and colorful gradient at the start of animation */
+        }
+        100% {
+            background: linear-gradient(to bottom right, #a6ff8a, #6effc6, #56c6ff, #a084ff, #ff78d1, #ff5e78); /* Vibrant and colorful gradient at the end of animation */
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="content">
+        <h1>Faster Colorful Animated Gradient Background</h1>
+        <p>This is an example of a vibrant and colorful gradient background with a faster but elegant animation.</p>
+    </div>
+</body>
+</html>
